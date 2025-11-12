@@ -1,1 +1,18 @@
 /home/nhotin/work/FLAPPY_BIRD_RL/videos
+# 忽略中间检查点，只保留开头和结尾的
+saved_networks/bird-dqn-30000.*
+saved_networks/bird-dqn-40000.*
+saved_networks/bird-dqn-50000.*
+saved_networks/bird-dqn-60000.*
+saved_networks/bird-dqn-70000.*
+saved_networks/bird-dqn-80000.*
+saved_networks/bird-dqn-90000.*
+saved_networks/bird-dqn-1[0-8][0-9][0-9][0-9][0-9].*
+saved_networks/bird-dqn-2[0-8][0-9][0-9][0-9][0-9].*
+saved_networks/bird-dqn-3[0-9][0-9][0-9][0-9][0-9].*
+saved_networks/bird-dqn-4[0-9][0-9][0-9][0-9][0-9].*
+saved_networks/bird-dqn-5[0-9][0-9][0-9][0-9][0-9].*
+saved_networks/bird-dqn-6[0-9][0-9][0-9][0-9][0-9].*
+saved_networks/bird-dqn-7[0-9][0-9][0-9][0-9][0-9].*
+saved_networks/bird-dqn-8[0-9][0-9][0-9][0-9][0-9].*
+saved_networks/bird-dqn-9[0-8][0-9][0-9][0-9][0-9].*

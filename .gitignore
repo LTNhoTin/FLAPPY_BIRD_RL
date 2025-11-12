@@ -1,4 +1,5 @@
 /home/nhotin/work/FLAPPY_BIRD_RL/videos
+log.txt
 # 忽略中间检查点，只保留开头和结尾的
 saved_networks/bird-dqn-30000.*
 saved_networks/bird-dqn-40000.*

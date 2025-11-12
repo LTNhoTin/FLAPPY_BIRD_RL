@@ -35,7 +35,7 @@ EXPLORE = 2000000.  # frames over which to anneal epsilon
 FINAL_EPSILON = 0.0001  # final value of epsilon
 INITIAL_EPSILON = 0.0001  # starting value of epsilon
 REPLAY_MEMORY = 50000  # number of previous transitions to remember
-BATCH = 512  # size of minibatch
+BATCH = 128  # size of minibatch
 FRAME_PER_ACTION = 1
 
 # Prepare dirs
@@ -209,9 +209,6 @@ def trainNetwork(s, readout, h_fc1, sess):
 
             # run the selected action and observe next state and reward
             x_t1_colored, r_t, terminal = game_state.frame_step(a_t)
-            # init video writer lazily after we know frame size
-            if video_writer is None:
-                start_video_writer(t, x_t1_colored)
             x_t1 = cv2.cvtColor(cv2.resize(x_t1_colored, (80, 80)), cv2.COLOR_BGR2GRAY)
             ret, x_t1 = cv2.threshold(x_t1, 1, 255, cv2.THRESH_BINARY)
             x_t1 = np.reshape(x_t1, (80, 80, 1))
@@ -219,9 +216,12 @@ def trainNetwork(s, readout, h_fc1, sess):
             s_t1 = np.append(x_t1, s_t[:, :, :3], axis=2)
 
             # write video frame (convert RGB -> BGR for OpenCV)
+            video_frame = np.transpose(x_t1_colored, (1, 0, 2))
+            if video_writer is None:
+                start_video_writer(t, video_frame)
             if video_writer is not None:
                 try:
-                    bgr = cv2.cvtColor(x_t1_colored, cv2.COLOR_RGB2BGR)
+                    bgr = cv2.cvtColor(video_frame, cv2.COLOR_RGB2BGR)
                     video_writer.write(bgr)
                 except Exception as e:
                     logging.warning("Video write failed: %s", str(e))
